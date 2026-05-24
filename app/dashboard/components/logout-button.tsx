@@ -22,7 +22,7 @@ export default function LogoutButton() {
         <button
             onClick={handleLogout}
             disabled={isLoading}
-            className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white transition-all duration-200 flex items-center gap-2 disabled:opacity-50"
+            className="px-4 py-2 bg-slate-900 hover:bg-slate-800 border border-slate-900/10 rounded-xl text-sm text-white transition-all duration-200 flex items-center gap-2 shadow-sm disabled:opacity-50"
         >
             {isLoading ? (
                 <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">

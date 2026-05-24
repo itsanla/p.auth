@@ -37,11 +37,11 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
+        <div className="min-h-screen flex items-center justify-center p-4">
             <div className="w-full max-w-md">
                 {/* Logo/Header */}
                 <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 mb-4 shadow-lg shadow-purple-500/30">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-slate-900 mb-4 shadow-[0_12px_30px_rgba(15,23,42,0.25)]">
                         <svg
                             className="w-8 h-8 text-white"
                             fill="none"
@@ -56,19 +56,19 @@ export default function LoginPage() {
                             />
                         </svg>
                     </div>
-                    <h1 className="text-2xl font-bold text-white mb-2">
+                    <h1 className="text-2xl font-semibold text-slate-900 mb-2">
                         Authenticator Dashboard
                     </h1>
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-slate-500 text-sm">
                         Sign in to access your OTP codes
                     </p>
                 </div>
 
                 {/* Login Form */}
-                <div className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 p-8 shadow-2xl">
+                <div className="bg-[var(--ios-surface)] rounded-3xl border border-[var(--ios-border)] p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {error && (
-                            <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm text-center animate-shake">
+                            <div className="bg-rose-50 border border-rose-200 rounded-xl p-3 text-rose-600 text-sm text-center animate-shake">
                                 {error}
                             </div>
                         )}
@@ -76,7 +76,7 @@ export default function LoginPage() {
                         <div>
                             <label
                                 htmlFor="username"
-                                className="block text-sm font-medium text-gray-300 mb-2"
+                                className="block text-sm font-medium text-slate-700 mb-2"
                             >
                                 Username
                             </label>
@@ -85,7 +85,7 @@ export default function LoginPage() {
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                                className="w-full px-4 py-3 bg-[var(--ios-surface-alt)] border border-[var(--ios-border)] rounded-2xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[var(--ios-accent)] focus:border-transparent transition-all duration-200"
                                 placeholder="Enter your username"
                                 required
                                 autoComplete="username"
@@ -95,7 +95,7 @@ export default function LoginPage() {
                         <div>
                             <label
                                 htmlFor="password"
-                                className="block text-sm font-medium text-gray-300 mb-2"
+                                className="block text-sm font-medium text-slate-700 mb-2"
                             >
                                 Password
                             </label>
@@ -104,7 +104,7 @@ export default function LoginPage() {
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                                className="w-full px-4 py-3 bg-[var(--ios-surface-alt)] border border-[var(--ios-border)] rounded-2xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[var(--ios-accent)] focus:border-transparent transition-all duration-200"
                                 placeholder="Enter your password"
                                 required
                                 autoComplete="current-password"
@@ -114,7 +114,7 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full py-3 px-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-pink-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-purple-500/30"
+                            className="w-full py-3 px-4 bg-[var(--ios-accent)] text-white font-semibold rounded-2xl hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[var(--ios-accent)] focus:ring-offset-2 focus:ring-offset-[var(--ios-bg)] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_12px_30px_rgba(10,132,255,0.25)]"
                         >
                             {isLoading ? (
                                 <span className="inline-flex items-center">
@@ -147,7 +147,7 @@ export default function LoginPage() {
                 </div>
 
                 {/* Footer */}
-                <p className="text-center text-gray-500 text-xs mt-6">
+                <p className="text-center text-slate-400 text-xs mt-6">
                     Secure • Stateless • Edge-Ready
                 </p>
             </div>

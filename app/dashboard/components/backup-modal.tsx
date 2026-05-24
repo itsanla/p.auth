@@ -76,26 +76,26 @@ export default function BackupModal({
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                className="absolute inset-0 bg-black/20 backdrop-blur-sm"
                 onClick={onClose}
             />
 
             {/* Modal */}
-            <div className="relative bg-slate-800/90 backdrop-blur-xl rounded-2xl border border-white/10 p-6 w-full max-w-md shadow-2xl animate-in zoom-in-95 duration-200">
+            <div className="relative bg-[var(--ios-surface)] rounded-3xl border border-[var(--ios-border)] p-6 w-full max-w-md shadow-[0_30px_80px_rgba(15,23,42,0.15)] animate-in zoom-in-95 duration-200">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
                     <div>
-                        <h3 className="text-lg font-semibold text-white">Backup Codes</h3>
-                        <p className="text-sm text-gray-400 truncate max-w-[280px]">
+                        <h3 className="text-lg font-semibold text-slate-900">Backup Codes</h3>
+                        <p className="text-sm text-slate-500 truncate max-w-[280px]">
                             {email}
                         </p>
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+                        className="p-2 rounded-full hover:bg-[var(--ios-surface-alt)] transition-colors"
                     >
                         <svg
-                            className="w-5 h-5 text-gray-400"
+                            className="w-5 h-5 text-slate-400"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -112,56 +112,60 @@ export default function BackupModal({
 
                 {/* Backup Codes Grid */}
                 {backupCodes.length > 0 ? (
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="space-y-2">
                         {backupCodes.map((code, index) => {
                             const isUsed = usedCodes.has(index);
                             return (
-                                <div key={index} className="relative">
+                                <div
+                                    key={index}
+                                    className={`flex items-center justify-between rounded-2xl border transition-all ${
+                                        isUsed
+                                            ? "border-rose-200 bg-rose-50"
+                                            : "border-[var(--ios-border)] bg-[var(--ios-surface-alt)]"
+                                    }`}
+                                >
                                     <button
                                         onClick={() => copyCode(code, index)}
-                                        className={`w-full p-3 border rounded-xl text-center font-mono text-lg transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
-                                            isUsed
-                                                ? "bg-red-500/20 border-red-500/50 text-red-300 line-through"
-                                                : "bg-white/5 hover:bg-white/10 border-white/10 text-white"
-                                        }`}
+                                        className="flex-1 px-4 py-3 text-left"
                                     >
                                         {copiedIndex === index ? (
-                                            <span className="text-green-400 text-sm">Copied!</span>
+                                            <span className="text-emerald-500 text-sm font-semibold">
+                                                Copied!
+                                            </span>
                                         ) : (
-                                            code
-                                        )}
-                                    </button>
-                                    <button
-                                        onClick={() => toggleUsed(index)}
-                                        className="absolute -top-2 -right-2 w-6 h-6 rounded-full border-2 border-slate-700 bg-slate-800 flex items-center justify-center transition-all duration-200 hover:scale-110"
-                                    >
-                                        {isUsed && (
-                                            <svg
-                                                className="w-4 h-4 text-red-400"
-                                                fill="currentColor"
-                                                viewBox="0 0 20 20"
+                                            <span
+                                                className={`font-code text-base ${
+                                                    isUsed
+                                                        ? "text-rose-500 line-through"
+                                                        : "text-slate-900"
+                                                }`}
                                             >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
+                                                {code}
+                                            </span>
                                         )}
                                     </button>
+                                    <label className="flex items-center gap-2 pr-4 text-xs text-slate-500">
+                                        <input
+                                            type="checkbox"
+                                            checked={isUsed}
+                                            onChange={() => toggleUsed(index)}
+                                            className="h-4 w-4 accent-[var(--ios-accent)]"
+                                        />
+                                        Used
+                                    </label>
                                 </div>
                             );
                         })}
                     </div>
                 ) : (
-                    <div className="text-center py-8 text-gray-400">
+                    <div className="text-center py-8 text-slate-400">
                         No backup codes available
                     </div>
                 )}
 
                 {/* Footer */}
-                <p className="mt-6 text-xs text-gray-500 text-center">
-                    {isSaving ? "Saving..." : "Click on a code to copy it to clipboard"}
+                <p className="mt-6 text-xs text-slate-400 text-center">
+                    {isSaving ? "Saving..." : "Tap a code to copy it."}
                 </p>
             </div>
         </div>

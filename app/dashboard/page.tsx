@@ -6,13 +6,13 @@ export default function DashboardPage() {
     const accounts = parseGmailData();
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <div className="min-h-screen text-slate-900">
             {/* Header */}
-            <header className="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-xl border-b border-white/10">
+            <header className="sticky top-0 z-40 bg-[var(--ios-surface-alpha)] backdrop-blur-xl border-b border-[var(--ios-border)]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+                            <div className="w-10 h-10 rounded-2xl bg-slate-900 flex items-center justify-center text-white shadow-[0_12px_30px_rgba(15,23,42,0.25)]">
                                 <svg
                                     className="w-5 h-5 text-white"
                                     fill="none"
@@ -28,10 +28,10 @@ export default function DashboardPage() {
                                 </svg>
                             </div>
                             <div>
-                                <h1 className="text-lg font-semibold text-white">
+                                <h1 className="text-lg font-semibold text-slate-900">
                                     Authenticator
                                 </h1>
-                                <p className="text-xs text-gray-400">
+                                <p className="text-xs text-slate-500">
                                     {accounts.length} account{accounts.length !== 1 ? "s" : ""}
                                 </p>
                             </div>
@@ -47,7 +47,7 @@ export default function DashboardPage() {
             </main>
 
             {/* Footer */}
-            <footer className="py-6 text-center text-gray-600 text-xs">
+            <footer className="py-6 text-center text-slate-400 text-xs">
                 Stateless Authenticator Dashboard • Secure • Edge-Ready
             </footer>
         </div>
