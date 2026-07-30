@@ -2,6 +2,8 @@ import { parseGmailData } from "@/lib/gmail-data";
 import OTPGrid from "./components/otp-grid";
 import LogoutButton from "./components/logout-button";
 
+export const dynamic = "force-dynamic";
+
 export default function DashboardPage() {
     const accounts = parseGmailData();
 
