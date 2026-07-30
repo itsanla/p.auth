@@ -14,6 +14,8 @@ services:
       - JWT_SECRET=${JWT_SECRET}
       - UPSTASH_REDIS_REST_URL=${UPSTASH_REDIS_REST_URL}
       - UPSTASH_REDIS_REST_TOKEN=${UPSTASH_REDIS_REST_TOKEN}
+    env_file:
+      - .env
     volumes:
       - /home/anla/backup/p.auth:/data
     networks:
