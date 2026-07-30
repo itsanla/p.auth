@@ -15,7 +15,7 @@ services:
       - UPSTASH_REDIS_REST_URL=${UPSTASH_REDIS_REST_URL}
       - UPSTASH_REDIS_REST_TOKEN=${UPSTASH_REDIS_REST_TOKEN}
     volumes:
-      - /home/itsanla/backup/p.auth:/data
+      - /home/anla/backup/p.auth:/data
     networks:
       - coolify
     labels:
