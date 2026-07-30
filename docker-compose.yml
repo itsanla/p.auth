@@ -24,12 +24,12 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=coolify"
       # HTTP Router (Redirect to HTTPS)
-      - "traefik.http.routers.pauth-http.rule=Host(`secret.anla.my.id`)"
+      - "traefik.http.routers.pauth-http.rule=Host(`auth.anla.my.id`)"
       - "traefik.http.routers.pauth-http.entrypoints=http"
       - "traefik.http.routers.pauth-http.middlewares=pauth-redirect-to-https"
       - "traefik.http.middlewares.pauth-redirect-to-https.redirectscheme.scheme=https"
       # HTTPS Router
-      - "traefik.http.routers.pauth-https.rule=Host(`secret.anla.my.id`)"
+      - "traefik.http.routers.pauth-https.rule=Host(`auth.anla.my.id`)"
       - "traefik.http.routers.pauth-https.entrypoints=https"
       - "traefik.http.routers.pauth-https.tls=true"
       - "traefik.http.routers.pauth-https.tls.certresolver=letsencrypt"
