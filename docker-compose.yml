@@ -1,0 +1,40 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pauth-app
+    restart: always
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - SQLITE_DB_PATH=/data/p-auth.sqlite
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
+      - UPSTASH_REDIS_REST_URL=${UPSTASH_REDIS_REST_URL}
+      - UPSTASH_REDIS_REST_TOKEN=${UPSTASH_REDIS_REST_TOKEN}
+    volumes:
+      - /home/itsanla/backup/p.auth:/data
+    networks:
+      - coolify
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
+      # HTTP Router (Redirect to HTTPS)
+      - "traefik.http.routers.pauth-http.rule=Host(`secret.anla.my.id`)"
+      - "traefik.http.routers.pauth-http.entrypoints=http"
+      - "traefik.http.routers.pauth-http.middlewares=pauth-redirect-to-https"
+      - "traefik.http.middlewares.pauth-redirect-to-https.redirectscheme.scheme=https"
+      # HTTPS Router
+      - "traefik.http.routers.pauth-https.rule=Host(`secret.anla.my.id`)"
+      - "traefik.http.routers.pauth-https.entrypoints=https"
+      - "traefik.http.routers.pauth-https.tls=true"
+      - "traefik.http.routers.pauth-https.tls.certresolver=letsencrypt"
+      # Load Balancer Target Port
+      - "traefik.http.services.pauth-service.loadbalancer.server.port=3000"
+
+networks:
+  coolify:
+    name: coolify
+    external: true
